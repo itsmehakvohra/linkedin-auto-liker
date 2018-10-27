@@ -1,0 +1,14 @@
+{
+  "name": "linkedin-puppeteer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "linkedin-auto-poster.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^1.9.0"
+  }
+}
