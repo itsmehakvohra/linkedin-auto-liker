@@ -4,13 +4,15 @@
   "description": "",
   "main": "linkedin-auto-poster.js",
   "scripts": {
-    "server": "babel-node app.js",
+    "server": "babel-node server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "express-validator": "^5.3.0",
     "puppeteer": "^1.9.0"
   },
   "devDependencies": {

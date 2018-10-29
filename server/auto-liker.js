@@ -35,7 +35,7 @@ async function run() {
 
     await page.waitForSelector(LIKE_BUTTON);
     console.log("got it.");
-    
+
     await page.click(LIKE_BUTTON);
     console.log("we liked it");
 }
