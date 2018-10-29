@@ -39,4 +39,4 @@ async function likePost({ postUrl, username, password }) {
     console.log("we liked it");
 }
 
-export default likePost;
+module.exports = likePost;
