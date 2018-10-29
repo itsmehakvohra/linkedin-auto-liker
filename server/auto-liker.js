@@ -5,7 +5,8 @@ async function likePost({ postUrl, username, password }) {
     //Launch Puppeteer
     const browser = await puppeteer.launch({
         //Headless is false so you can see program run.
-        headless: false
+        headless: false,
+        args: ['--no-sandbox']
     });
 
     //Launch a new page
