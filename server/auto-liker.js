@@ -40,4 +40,5 @@ async function likePost({ postUrl, username, password }) {
     console.log("we liked it");
 }
 
+//export the likePost function
 module.exports = likePost;
