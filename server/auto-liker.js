@@ -6,7 +6,7 @@ async function likePost({ postUrl, username, password }) {
     const browser = await puppeteer.launch({
         //Headless is false so you can see program run.
         headless: process.env.NODE_ENV === 'production',
-        args: ['--no-sandbox']
+        args: ['--no-sandbox',  '--disable-setuid-sandbox']
     });
 
     //Launch a new page
