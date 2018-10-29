@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 
 const likePost = require('./auto-liker');
 
+const port = process.env.PORT || 8000;
+
 let app = express();
 dotenv.config();
 
@@ -22,4 +24,4 @@ app.post('/', async (req, res) => {
 	res.send({ status: 'Success!' })
 });
 
-app.listen(process.env.PORT || 3000 , () => console.log('Running 🚀 on server'));
+app.listen(port , () => console.log('Running 🚀 on server' + port));
