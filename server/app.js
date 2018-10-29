@@ -24,4 +24,4 @@ app.post('/', async (req, res) => {
 	res.send({ status: 'Success!' })
 });
 
-app.listen(port , () => console.log('Running 🚀 on server' + port));
+app.listen(port , () => console.log('Running 🚀 on server' + ' ' + port));
