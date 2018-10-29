@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
-const CREDS = require('./cred');
 
-async function run() {
+async function likePost({ postUrl, username, password }) {
 
     //Launch Puppeteer
     const browser = await puppeteer.launch({
@@ -21,17 +20,17 @@ async function run() {
     const LIKE_BUTTON = '.like-button'; //LinkedIn Like Button selector
 
     await page.click(USERNAME_SELECTOR); // click Username field
-    await page.keyboard.type(CREDS.username); //Type in Username field (bring in username from cred.js)
+    await page.keyboard.type(username); //Type in Username field (bring in username from cred.js)
 
     await page.click(PASSWORD_SELECTOR);
-    await page.keyboard.type(CREDS.password);
+    await page.keyboard.type(password);
 
     await page.click(LOGIN_BUTTON);
 
     await page.waitForNavigation();
     console.log("logged in");
 
-    await page.goto('https://www.linkedin.com/feed/update/urn:li:activity:6456275230754160640'); //Go to page link here 
+    await page.goto(postUrl); //Go to page link here 
 
     await page.waitForSelector(LIKE_BUTTON);
     console.log("got it.");
@@ -40,4 +39,4 @@ async function run() {
     console.log("we liked it");
 }
 
-run();
+export default likePost;
