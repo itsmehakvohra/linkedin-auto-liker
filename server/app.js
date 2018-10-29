@@ -22,4 +22,4 @@ app.post('/', async (req, res) => {
 	res.send({ status: 'Success!' })
 });
 
-app.listen(3000, () => console.log('Running 🚀 on a http://localhost:3000/'));
+app.listen(process.env.PORT || 3000 , () => console.log('Running 🚀 on server'));
