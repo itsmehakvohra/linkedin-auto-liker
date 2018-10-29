@@ -14,13 +14,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, './index.html'));
+	console.log('IS THIS HERE?!?!');
+	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.post('/', async (req, res) => {
 	console.log(req.body.postUrl);
 	await likePost({ postUrl: req.body.postUrl, username: process.env.USERNAME_TEST, password: process.env.PASSWORD_TEST });
-	res.sendFile(path.join(__dirname, './index.html'));
+	res.sendFile(path.join(__dirname, 'index.html'));
 	res.send({ status: 'Success!' })
 });
 
