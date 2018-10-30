@@ -6,7 +6,10 @@ async function likePost({ postUrl, username, password }) {
     const browser = await puppeteer.launch({
         //Headless is false so you can see program run.
         headless: true,
-        args: ['--no-sandbox',  '--disable-setuid-sandbox']
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--proxy-server=35.231.44.20:80']
     });
 
     //Launch a new page
