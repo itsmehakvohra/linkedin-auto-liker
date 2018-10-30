@@ -9,14 +9,18 @@ async function likePost({ postUrl, username, password }) {
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--proxy-server=35.231.44.20:80']
+            '--proxy-server=35.231.44.20:80'
+        ]
     });
 
     //Launch a new page
+    console.log("new page loaded");
     const page = await browser.newPage();
 
     //////////////START LINKEDIN//////////////////
+    console.log("going to Linkedin");
     await page.goto('https://www.linkedin.com/');
+    console.log("In Linkedin")
 
     const USERNAME_SELECTOR = '#login-email'; // LinkedIn username selector
     const PASSWORD_SELECTOR = '#login-password'; //LinkedIn password selector
@@ -41,6 +45,9 @@ async function likePost({ postUrl, username, password }) {
 
     await page.click(LIKE_BUTTON);
     console.log("we liked it");
+
+    await browser.close();
+    console.log("we outtie");
 }
 
 //export the likePost function
