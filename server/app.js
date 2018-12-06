@@ -19,10 +19,28 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', async (req, res) => {
+
+	const postUrl = req.body.postUrl;
+	const industry = req.body.industry;
 	console.log("Post Url Entered: " + req.body.postUrl);
-	await likePost({ postUrl: req.body.postUrl, username: process.env.USERNAME_TEST, password: process.env.PASSWORD_TEST });
-	res.sendFile(path.join(__dirname, 'index.html'));
-	res.send({ status: 'Success!' })
+
+	const credentials = JSON.parse(process.env.CREDENTIALS);
+	const credentialsByIndustry = credentials.filter(function (item) {
+		if (item.industry === industry || item.industry === 'admin') {
+			return true;
+		} else {
+			return false;
+		}
+	});
+	console.log(credentials);
+	console.log(credentialsByIndustry);
+	credentialsByIndustry.forEach(function (item) {
+		// Credentials Array
+		likePost({ postUrl, username: item.username, password: item.password });
+		console.log(item.username + " logged in")
+	});
+
+	res.send({ status: 'Success!' });
 });
 
-app.listen(port , () => console.log('Running 🚀 on server' + ' ' + port));
+app.listen(port, () => console.log('Running 🚀 on server' + ' ' + port));

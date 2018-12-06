@@ -5,17 +5,18 @@ async function likePost({ postUrl, username, password }) {
     //Launch Puppeteer
     const browser = await puppeteer.launch({
         //Headless is false so you can see program run.
-        headless: true,
+        headless: false,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--proxy-server=35.231.44.20:80'
+            // '--proxy-server=198.199.112.192:3128'
         ]
     });
 
     //Launch a new page
-    console.log("new page loaded");
-    const page = await browser.newPage();
+    const context = await browser.createIncognitoBrowserContext();
+    const page = await context.newPage();
+    console.log("new incognito page loaded");
 
     //////////////START LINKEDIN//////////////////
     console.log("going to Linkedin");
@@ -46,7 +47,7 @@ async function likePost({ postUrl, username, password }) {
     await page.click(LIKE_BUTTON);
     console.log("we liked it");
 
-    await browser.close();
+    await context.close();
     console.log("we outtie");
 }
 
